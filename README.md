@@ -346,7 +346,7 @@ class Encoder(nn.Module):
 
     def forward(self, x, seg, enc_mask, atten_map_save = False):
 
-        pos = torch.arange(x.shape[1]).expand_as(x) 
+        pos = torch.arange(x.shape[1]).expand_as(x).to(DEVICE) 
 
         x = self.token_embedding(x) + self.pos_embedding(pos) + self.seg_embedding(seg) 
         x = self.dropout(x)
